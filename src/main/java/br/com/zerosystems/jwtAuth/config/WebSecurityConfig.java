@@ -24,8 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			
 			// filtra requisições de login
-			.addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
-	                UsernamePasswordAuthenticationFilter.class)
+			//.addFilterBefore(new JWTLoginFilter("/login", authenticationManager()),
+	          //      UsernamePasswordAuthenticationFilter.class)
 			
 			// filtra outras requisições para verificar a presença do JWT no header
 			.addFilterBefore(new JWTAuthenticationFilter(),
@@ -39,5 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.withUser("admin")
 			.password("{noop}password")
 			.roles("ADMIN");
+		
+		
 	}
 }
