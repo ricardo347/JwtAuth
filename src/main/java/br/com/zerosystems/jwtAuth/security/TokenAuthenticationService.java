@@ -38,7 +38,7 @@ public class TokenAuthenticationService extends AbstractAuthenticationToken{
 	}
 	
 	public TokenAuthenticationService authRequest(ServletRequest request) {
-		this.setAuthenticated(false);
+		this.setAuthenticated(true);
 		return this;		
 	}	
 
@@ -60,7 +60,7 @@ public class TokenAuthenticationService extends AbstractAuthenticationToken{
 	
 	static Authentication getAuthentication(HttpServletRequest request) {
 		String token = request.getHeader(HEADER_STRING);		
-		/*if (token != null) {
+		if (token != null) {
 			// faz parse do token
 			String user = Jwts.parser()
 					.setSigningKey(SECRET)
@@ -70,7 +70,7 @@ public class TokenAuthenticationService extends AbstractAuthenticationToken{
 			if (user != null) {
 				return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
 			}
-		}*/
+		}
 		
 		return new UsernamePasswordAuthenticationToken("", null);
 	}
